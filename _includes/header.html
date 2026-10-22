@@ -21,7 +21,7 @@
     {% if logo %}
       <span class="logo">
         {% if icon %}
-          <img src="{{ icon | relative_url | uri_escape }}" alt="Drosophila icon">
+          <img src="{{ icon | relative_url | uri_escape }}?v=2" alt="Drosophila icon">
         {% elsif svg %}
           {{ svg | file_read }}
         {% else %}
