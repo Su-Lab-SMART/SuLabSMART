@@ -1,94 +1,21 @@
 ---
 ---
 
-# Lab Website Template
+# Welcome to the Su Lab at SMART
 
-[Lab Website Template](https://github.com/greenelab/lab-website-template) is an easy-to-use, flexible website template for [labs](https://www.greenelab.com/).
-Spend less time worrying about managing a website and citations, and more time running your lab.
+The Su Lab studies how animals sense and process odors. We focus on olfactory receptor neurons (ORNs) in *Drosophila* and ask how sensory signals are shaped before they reach the brain.
 
-{%
-  include button.html
-  type="docs"
-  link="https://greene-lab.gitbook.io/lab-website-template-docs"
-%}
-{%
-  include button.html
-  type="github"
-  text="On GitHub"
-  link="greenelab/lab-website-template"
-%}
+Olfaction helps animals find food and mates while avoiding danger. It also guides disease-carrying insects toward human hosts. Our work examines how neuromodulation changes ORN responses and how interactions between neighboring neurons shape odor coding and behavior.
 
-{% include section.html %}
+## Explore the lab
 
-## Highlights
+- [Research directions]({{ "/research/" | relative_url }}) — sensory coding, signal amplification, and interactions between olfactory neurons.
+- [Meet the team]({{ "/team/" | relative_url }}) — current members of the Su Lab.
+- [Selected publications]({{ "/publications/" | relative_url }}) — recent work from the lab.
+- [Contact and location]({{ "/contact/" | relative_url }}) — reach the lab at SMART in Shenzhen.
 
-{% capture text %}
+## Contact
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+**Chih-Ying Su** · Senior Principal Investigator, Shenzhen Medical Academy of Research and Translation (SMART)
 
-{%
-  include button.html
-  link="research"
-  text="See our publications"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="research"
-  title="Our Research"
-  text=text
-%}
-
-{% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-{%
-  include button.html
-  link="projects"
-  text="Browse our projects"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="projects"
-  title="Our Projects"
-  flip=true
-  style="bare"
-  text=text
-%}
-
-{% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-{%
-  include button.html
-  link="team"
-  text="Meet our team"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="team"
-  title="Our Team"
-  text=text
-%}
+[chihyingsu@gmail.com](mailto:chihyingsu@gmail.com) · [suchihying@smart.org.cn](mailto:suchihying@smart.org.cn)

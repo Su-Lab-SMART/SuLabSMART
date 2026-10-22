@@ -28,17 +28,12 @@ jobs:
           ruby-version: "3.1"
           bundler-cache: true
 
-      - name: Get Pages URL
-        id: pages
-        uses: actions/configure-pages@v6
-
-      - name: Set root URL
-        run: |
-          printf "\n\nurl: ${{ steps.pages.outputs.origin }}" >> _config.yaml
-
       - name: Build live version of site
         run: |
-          JEKYLL_ENV=production bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path || '' }}"
+          printf "\n\nurl: https://%s.github.io\n" "${GITHUB_REPOSITORY_OWNER}" >> _config.yaml
+          repo_name="${GITHUB_REPOSITORY#*/}"
+          JEKYLL_ENV=production bundle exec jekyll build --baseurl "/${repo_name}"
+          touch _site/.nojekyll
 
       - name: Commit live site to Pages branch
         uses: JamesIves/github-pages-deploy-action@v4.8.0
