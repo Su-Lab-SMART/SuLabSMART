@@ -1,20 +1,16 @@
 ---
-title: Lab Photos
-nav:
-  order: 5
 ---
-
-# Lab Photos
-
-Lab gatherings, milestones, celebrations, and everyday life in the Su Lab.
-
+{% assign info = site.data.pages.photos %}
+<h1>{{ info.heading | escape }}</h1>
+{{ info.introduction | render_content }}
+{% assign photos = site.photos | sort: 'order' %}
 <div class="lab-gallery">
-{% for photo in site.data.lab-photos %}
+{% for photo in photos %}
   <figure class="lab-photo">
-    <a href="{{ photo.image | relative_url }}" aria-label="{{ photo.alt | escape }} — open full photo">
-      <img src="{{ photo.image | relative_url }}" alt="{{ photo.alt | escape }}" loading="lazy" decoding="async">
+    <a href="{{ photo.image | relative_url | escape }}" aria-label="{{ photo.alt | default: photo.title | escape }} — {{ info.open_photo_label | escape }}">
+      <img src="{{ photo.image | relative_url | escape }}" alt="{{ photo.alt | default: photo.title | escape }}" loading="lazy" decoding="async">
     </a>
-    <figcaption>{% for line in photo.caption %}<p>{{ line | escape }}</p>{% endfor %}</figcaption>
+    <figcaption>{% if photo.date_label != '' %}<p>{{ photo.date_label | escape }}</p>{% endif %}{{ photo.content | render_content }}</figcaption>
   </figure>
 {% endfor %}
 </div>

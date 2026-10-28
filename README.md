@@ -12,10 +12,7 @@ To enable publishing in GitHub, open **Settings → Pages**, choose **Deploy fro
 
 ## Updating content
 
-- Edit the homepage in `index.md`.
-- Edit research, team (People), publications, lab photos, contact, and joining information in their page folders.
-- Add or update a member profile in `_members/` using the existing Markdown files as examples.
-- Commit changes to `main`; the `on-push` workflow rebuilds and republishes the site.
+Use the English forms in [Pages CMS](https://app.pagescms.org/), selecting this repository and the `main` branch. See [EDITOR_GUIDE.md](EDITOR_GUIDE.md) for everyday editing and the one-time GitHub App setup. Saving content automatically rebuilds and publishes the website.
 
 ## Local preview
 
@@ -23,4 +20,10 @@ The template includes a Docker preview script at `.docker/run.sh`. It builds the
 
 ## Migrated content
 
-See [MIGRATION.md](MIGRATION.md) for source inventory and current/alumni membership details. Gallery captions are in `_data/lab-photos.json`; photos are in `images/lab-photos/`. Current profiles use `status: current` and `order` in `_members/`. Former profiles use `status: alumni`.
+See [MIGRATION.md](MIGRATION.md) for source inventory and current/alumni membership details. Gallery entries are in `_photos/`; images are in `images/lab-photos/`. Current profiles use `status: current` and `order` in `_members/`. Former profiles use `status: alumni`.
+
+## Content management
+
+Use [Pages CMS](https://app.pagescms.org/) with the `main` branch. English forms are configured in `.pages.yml`. See [EDITOR_GUIDE.md](EDITOR_GUIDE.md) for account setup, content editing, image uploads, publishing, and recovery. Content lives in `_data/pages`, `_data/settings.json`, `_data/contact.json`, and the `_members`, `_research`, `_publications`, `_photos`, `_awards`, and `_pages` collections. Page templates contain layout only.
+
+After a local build, run `bundle exec ruby scripts/check_content.rb` to check CMS field coverage and generated links.

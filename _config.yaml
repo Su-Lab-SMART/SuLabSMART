@@ -1,76 +1,60 @@
-# site properties and page defaults
-title: Su Lab at SMART
-subtitle: Sensory neuroscience
-description: The Su Lab at the Shenzhen Medical Academy of Research and Translation studies how olfactory receptor neurons process odors and guide behavior.
-header: images/background.jpg
-footer: images/background.jpg
 proofer: false
-
-# site social media and other links
-links:
-  email: chihyingsu@gmail.com
-
-### jekyll settings
-
-# front matter defaults
 defaults:
-  # all markdown files
-  - scope:
-      path: ""
-    values:
-      layout: default
-  # markdown files in /_members
-  - scope:
-      type: "members"
-    values:
-      layout: member
-  # markdown files in /_posts
-  - scope:
-      type: "posts"
-    values:
-      layout: post
-
+- scope:
+    path: ''
+  values:
+    layout: default
+- scope:
+    type: members
+  values:
+    layout: member
+- scope:
+    type: posts
+  values:
+    layout: post
+- scope:
+    type: pages
+  values:
+    layout: content-page
 collections:
-  # generate page for each member
   members:
     output: true
-  # generate page for each post
   posts:
     output: true
-
-# jekyll plugins
+  research:
+    output: false
+  publications:
+    output: false
+  photos:
+    output: false
+  awards:
+    output: false
+  pages:
+    output: true
+    permalink: /pages/:name/
 plugins:
-  - jekyll-spaceship
-  - jekyll-sitemap
-  - jekyll-redirect-from
-  - jekyll-feed
-  - jekyll-last-modified-at
-
-# code block syntax highlighting
+- jekyll-spaceship
+- jekyll-sitemap
+- jekyll-redirect-from
+- jekyll-feed
+- jekyll-last-modified-at
 highlighter: rouge
-
-# jekyll theme
 theme: null
-
-# sass settings
 sass:
   sass_dir: _styles
-
-# force jekyll to include certain files/folders
 include:
-  - _styles
-  - _scripts
-
-# force jekyll to exclude certain files/folders
+- _styles
+- _scripts
 exclude:
-  - README.md
-  - LICENSE.md
-  - CITATION.cff
-  - MIGRATION.md
-  - migration-assets.json
-
-# configure jekyll spaceship
+- README.md
+- LICENSE.md
+- CITATION.cff
+- MIGRATION.md
+- migration-assets.json
+- EDITOR_GUIDE.md
+- scripts
+- .pages.yml
 jekyll-spaceship:
   mathjax-processor:
     src:
-      - https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js
+    - https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js

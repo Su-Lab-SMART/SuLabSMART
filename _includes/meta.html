@@ -7,6 +7,7 @@
   {% assign title = nil %}
 {% endif %}
 
+{% assign json_title = title %}
 {% assign title = title | xml_escape %}
 
 {% assign fulltitle = "" | split: "," %}
@@ -30,15 +31,11 @@
   {{ site.url }}{{ site.baseurl }}
 {%- endcapture %}
 
+{% assign json_description = description %}
 {% assign description = description | xml_escape %}
 
-{% assign png = "images/icon.png" | file_exists %}
-{% assign jpg = "images/icon.jpg" | file_exists %}
-{% assign icon = png | default: jpg | relative_url %}
-
-{% assign png = "images/share.png" | file_exists %}
-{% assign jpg = "images/share.jpg" | file_exists %}
-{% assign share = png | default: jpg | relative_url %}
+{% assign icon = site.data.settings.favicon | relative_url %}
+{% assign share = site.data.settings.share_image | relative_url %}
 
 {% assign published = page.date | date_to_xmlschema %}
 {% assign updated = page.last_modified_at | date_to_xmlschema %}
@@ -49,7 +46,7 @@
 
 <title>{{ fulltitle }}</title>
 
-<link rel="icon" href="{{ icon }}?v=2">
+<link rel="icon" href="{{ icon }}">
 
 <meta name="title" content="{{ title }}">
 <meta name="description" content="{{ description }}">
@@ -79,25 +76,22 @@
 {% endif %}
 
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    {% if page.author %}
-      "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "{{ title }}" },
-      "datePublished": "{{ published }}",
-      "dateModified": "{{ updated }}",
-    {% else %}
-      "@type": "WebSite",
-    {% endif %}
-    "name": "{{ title }}",
-    "description": "{{ description }}",
-    "headline": "{{ title }}",
-    "publisher": {
-      "@type": "Organization",
-      "logo": { "@type": "ImageObject", "url": "{{ icon }}" }
-    },
-    "url": "{{ url }}"
-  }
+{
+  "@context": "https://schema.org",
+  {% if page.author %}
+  "@type": "BlogPosting",
+  "author": {"@type": "Person", "name": {{ json_title | jsonify }}},
+  "datePublished": {{ published | jsonify }},
+  "dateModified": {{ updated | jsonify }},
+  {% else %}
+  "@type": "WebSite",
+  {% endif %}
+  "name": {{ json_title | jsonify }},
+  "description": {{ json_description | jsonify }},
+  "headline": {{ json_title | jsonify }},
+  "publisher": {"@type": "Organization", "logo": {"@type": "ImageObject", "url": {{ icon | jsonify }}}},
+  "url": {{ url | jsonify }}
+}
 </script>
 
 <link rel="alternate" type="application/rss+xml" href="{{ feed }}">
