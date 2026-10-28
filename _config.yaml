@@ -66,6 +66,8 @@ exclude:
   - README.md
   - LICENSE.md
   - CITATION.cff
+  - MIGRATION.md
+  - migration-assets.json
 
 # configure jekyll spaceship
 jekyll-spaceship:

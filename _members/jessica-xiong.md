@@ -5,6 +5,7 @@ role: undergrad
 affiliation: University of California San Diego
 links:
   email: j4xiong@ucsd.edu
+status: alumni
 ---
 
-Jessica joined the Su Lab in 2025 and is pursuing a B.S. in Neurobiology at the University of California San Diego.
+Jessica joined the Su Lab in 2025 and is pursuing a B.S. in Neurobiology at the University of California San Diego. She enjoys writing, singing, and drawing in her free time.

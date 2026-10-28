@@ -1,0 +1,12 @@
+{% assign member = include.member %}
+<article class="member-bio">
+  <a class="member-photo" href="{{ member.url | relative_url }}" aria-label="Read {{ member.name | escape }}'s profile">
+    <img src="{{ member.image | relative_url }}" alt="{{ member.name | escape }}" loading="lazy">
+  </a>
+  <div class="member-details">
+    <h2><a href="{{ member.url | relative_url }}">{{ member.name }}</a></h2>
+    <p class="member-role">{{ member.description }}</p>
+    <p><a href="mailto:{{ member.links.email | escape }}">{{ member.links.email }}</a>{% if member.role == 'principal-investigator' %} · <a href="mailto:suchihying@smart.org.cn">suchihying@smart.org.cn</a>{% endif %}</p>
+    {{ member.content | markdownify }}
+  </div>
+</article>

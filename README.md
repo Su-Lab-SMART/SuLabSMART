@@ -13,10 +13,14 @@ To enable publishing in GitHub, open **Settings → Pages**, choose **Deploy fro
 ## Updating content
 
 - Edit the homepage in `index.md`.
-- Edit research, team, publications, contact, and joining information in their page folders.
+- Edit research, team (People), publications, lab photos, contact, and joining information in their page folders.
 - Add or update a member profile in `_members/` using the existing Markdown files as examples.
 - Commit changes to `main`; the `on-push` workflow rebuilds and republishes the site.
 
 ## Local preview
 
 The template includes a Docker preview script at `.docker/run.sh`. It builds the site in a local container and serves it for review.
+
+## Migrated content
+
+See [MIGRATION.md](MIGRATION.md) for source inventory and current/alumni membership details. Gallery captions are in `_data/lab-photos.json`; photos are in `images/lab-photos/`. Current profiles use `status: current` and `order` in `_members/`. Former profiles use `status: alumni`.
