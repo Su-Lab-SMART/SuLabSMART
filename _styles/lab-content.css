@@ -79,5 +79,33 @@
     grid-template-columns: 1fr;
   }
 }
+.member-bio-text-only {
+  grid-template-columns: 1fr;
+}
+
+.profile-image {
+  float: left;
+  width: 175px;
+  margin: 0 32px 24px 0;
+  border-radius: var(--rounded);
+}
+
+.member-profile::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.awards-list li > p:first-of-type {
+  display: inline;
+}
+
+@media (max-width: 650px) {
+  .profile-image {
+    float: none;
+    display: block;
+    margin: 0 auto 24px;
+  }
+}
 
 /*# sourceMappingURL=lab-content.css.map */
