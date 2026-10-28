@@ -1,0 +1,18 @@
+{
+  "emails": [
+    {
+      "label": "chihyingsu@gmail.com",
+      "address": "chihyingsu@gmail.com"
+    },
+    {
+      "label": "suchihying@smart.org.cn",
+      "address": "suchihying@smart.org.cn"
+    }
+  ],
+  "address_lines": [
+    "Guangming Life Science Park, Xinhu Subdistrict, Guangming District",
+    "Shenzhen, Guangdong, China"
+  ],
+  "maps_url": "https://maps.google.com/?q=Guangming+Life+Science+Park%2C+Xinhu+Subdistrict%2C+Guangming+District%2C+Shenzhen%2C+Guangdong%2C+China",
+  "links": []
+}

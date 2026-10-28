@@ -1,27 +1,15 @@
 ---
 layout: default
 ---
-
-{% capture floatcontent %}
-
-{% include portrait.html lookup=page.slug %}
-
-<div>
-  {% for link in page.links %}
-    {% assign key = link[0] %}
-    {% assign value = link[1] %}
-    {% include button.html type=key link=value style="bare" %}<br>
-  {% endfor %}
-</div>
-
-{% endcapture %}
-
-{% include float.html content=floatcontent %}
-
-<h1>{{ page.name }}</h1>
-
-{% if page.status == "alumni" %}<p>Su Lab alumnus / alumna</p>{% endif %}
-
-{{ content }}
-
-<p><a href="{{ "/team/" | relative_url }}">Back to People</a></p>
+<article class="member-profile">
+  {% if page.image and page.image != '' %}<img class="profile-image" src="{{ page.image | relative_url }}" alt="{{ page.name | escape }}">{% endif %}
+  <h1>{{ page.name | escape }}</h1>
+  {% if page.status == 'alumni' %}<p>{{ site.data.pages.people.alumni_profile_label | escape }}</p>{% endif %}
+  {% if page.description and page.description != '' %}<p>{{ page.description | escape }}</p>{% endif %}
+  {% if page.affiliation and page.affiliation != '' %}<p>{{ page.affiliation | escape }}</p>{% endif %}
+  {% if page.history and page.history != '' %}<p>{{ page.history | escape }}</p>{% endif %}
+  <p>{% for email in page.emails %}<a href="mailto:{{ email | escape }}">{{ email | escape }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+  {% if page.links.size > 0 %}<ul>{% for link in page.links %}<li><a href="{{ link.url | relative_url | escape }}">{{ link.label | escape }}</a></li>{% endfor %}</ul>{% endif %}
+  {{ content | render_content }}
+</article>
+<p><a href="{{ '/team/' | relative_url }}">{{ site.data.pages.people.profile_back_label | escape }}</a></p>

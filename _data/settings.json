@@ -1,0 +1,47 @@
+{
+  "title": "Su Lab at SMART",
+  "subtitle": "Sensory neuroscience",
+  "description": "The Su Lab at the Shenzhen Medical Academy of Research and Translation studies how olfactory receptor neurons process odors and guide behavior.",
+  "logo": "images/icon.png",
+  "logo_alt": "Drosophila icon",
+  "favicon": "images/icon.png",
+  "share_image": "images/share.png",
+  "header_image": "images/background.jpg",
+  "footer_image": "images/background.jpg",
+  "illustration_credit": "Illustrations by Chih-Hui Su. All rights reserved.",
+  "copyright_name": "Su Lab at SMART",
+  "contact_link_label": "Contact and location",
+  "show_theme_credit": true,
+  "navigation": [
+    {
+      "label": "Home",
+      "url": "/",
+      "visible": true
+    },
+    {
+      "label": "Research",
+      "url": "/research/",
+      "visible": true
+    },
+    {
+      "label": "People",
+      "url": "/team/",
+      "visible": true
+    },
+    {
+      "label": "Publications",
+      "url": "/publications/",
+      "visible": true
+    },
+    {
+      "label": "Lab Photos",
+      "url": "/lab-photos/",
+      "visible": true
+    },
+    {
+      "label": "Join Us",
+      "url": "/join-us/",
+      "visible": true
+    }
+  ]
+}

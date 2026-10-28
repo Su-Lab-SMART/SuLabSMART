@@ -10,29 +10,15 @@
   data-size="wide"
 >
   <div>
-    <a href="mailto:chihyingsu@gmail.com">chihyingsu@gmail.com</a> ·
-    <a href="mailto:suchihying@smart.org.cn">suchihying@smart.org.cn</a><br>
-    Guangming Life Science Park, Xinhu Subdistrict, Guangming District<br>
-    Shenzhen, Guangdong, China<br>
-    <a href="{{ '/contact/' | relative_url }}">Contact and location</a><br>
-    Illustrations by Chih-Hui Su. All rights reserved.
+    {% for email in site.data.contact.emails %}<a href="mailto:{{ email.address | escape }}">{{ email.label | default: email.address | escape }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}<br>
+    {% for line in site.data.contact.address_lines %}{{ line | escape }}<br>{% endfor %}
+    <a href="{{ '/contact/' | relative_url }}">{{ site.data.settings.contact_link_label | escape }}</a><br>
+    {{ site.data.settings.illustration_credit | escape }}
   </div>
-
+  {% if site.data.contact.links.size > 0 %}<div>{% for link in site.data.contact.links %}<a href="{{ link.url | relative_url | escape }}">{{ link.label | escape }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</div>{% endif %}
   <div>
-    {% for link in site.links %}
-      {% assign key = link[0] %}
-      {% assign value = link[1] %}
-      {% include button.html type=key text="" link=value style="bare" %}
-    {% endfor %}
-  </div>
-
-  <div>
-    &copy; {{ site.time | date: "%Y" }}
-    {{ site.title }}
-    &nbsp; | &nbsp; Built with
-    <a href="https://github.com/greenelab/lab-website-template">
-      Lab Website Template
-    </a>
+    &copy; {{ site.time | date: '%Y' }} {{ site.data.settings.copyright_name | escape }}
+    {% if site.data.settings.show_theme_credit %} | Built with <a href="https://github.com/greenelab/lab-website-template">Lab Website Template</a>{% endif %}
   </div>
 
   <input

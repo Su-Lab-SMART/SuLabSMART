@@ -1,0 +1,761 @@
+# English forms for all website content. Layouts and build settings stay outside the CMS.
+media:
+- name: images
+  label: Image library
+  input: images
+  output: /images
+  rename: safe
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  - gif
+  - svg
+  - avif
+content:
+- name: pages
+  label: Page text
+  type: group
+  items:
+  - name: home
+    label: Home
+    type: file
+    path: _data/pages/home.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: section_heading
+      label: Introduction heading
+      type: string
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: links_heading
+      label: Explore links heading
+      type: string
+    - name: links
+      label: Links
+      type: object
+      list: true
+      fields:
+      - name: label
+        label: Link text
+        type: string
+        required: true
+      - name: url
+        label: Link address
+        type: string
+        required: true
+        description: Use https:// for another website, or a site path such as /research/.
+  - name: research_page
+    label: Research page
+    type: file
+    path: _data/pages/research.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+  - name: people_page
+    label: People page
+    type: file
+    path: _data/pages/people.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: awards_heading
+      label: Awards Heading
+      type: string
+    - name: alumni_heading
+      label: Alumni Heading
+      type: string
+    - name: profile_back_label
+      label: Back-to-People link text
+      type: string
+    - name: alumni_profile_label
+      label: Alumni profile label
+      type: string
+  - name: publications_page
+    label: Publications page
+    type: file
+    path: _data/pages/publications.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+  - name: photos_page
+    label: Lab Photos page
+    type: file
+    path: _data/pages/photos.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: open_photo_label
+      label: Open photo link label
+      type: string
+  - name: join
+    label: Join Us
+    type: file
+    path: _data/pages/join.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: section_heading
+      label: Invitation heading
+      type: string
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: contact_prompt
+      label: Contact invitation
+      type: string
+    - name: show_contact_emails
+      label: Show lab contact emails
+      type: boolean
+  - name: contact_page
+    label: Contact page
+    type: file
+    path: _data/pages/contact.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: email_heading
+      label: Email Heading
+      type: string
+    - name: location_heading
+      label: Location Heading
+      type: string
+    - name: maps_label
+      label: Map link text
+      type: string
+- name: members
+  label: People — current members & alumni
+  type: collection
+  path: _members
+  format: yaml-frontmatter
+  filename:
+    template: '{primary}.md'
+    field: false
+  operations:
+    rename: false
+  view:
+    primary: name
+    fields:
+    - name
+    - status
+    - description
+    - image
+    - order
+    sort:
+    - order
+    - name
+    search:
+    - name
+    default:
+      sort: order
+      order: asc
+  fields:
+  - name: name
+    label: Full name
+    type: string
+    required: true
+  - name: description
+    label: Position / role
+    type: string
+  - name: status
+    label: Membership
+    type: select
+    required: true
+    default: current
+    options:
+      values:
+      - name: current
+        label: Current member
+      - name: alumni
+        label: Alumni
+  - name: order
+    label: Display order
+    type: number
+    default: 100
+    required: true
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    options:
+      min: 0
+      step: 1
+  - name: image
+    label: Portrait
+    type: image
+    options:
+      media: images
+      path: images/members
+      rename: safe
+  - name: affiliation
+    label: Affiliation
+    type: string
+  - name: emails
+    label: Email addresses
+    type: string
+    list: true
+  - name: history
+    label: Roles and years in the lab
+    type: string
+    description: For alumni, e.g. Graduate Student (2021–25).
+  - name: links
+    label: Profile links
+    type: object
+    list: true
+    fields:
+    - name: label
+      label: Link text
+      type: string
+      required: true
+    - name: url
+      label: Link address
+      type: string
+      required: true
+      description: Use https:// for another website, or a site path such as /research/.
+  - name: body
+    label: Biography
+    type: rich-text
+    options:
+      format: html
+      switcher: false
+      media: images
+      path: images/members
+      rename: safe
+- name: research
+  label: Research topics
+  type: collection
+  path: _research
+  format: yaml-frontmatter
+  filename:
+    template: '{primary}.md'
+    field: false
+  operations:
+    rename: false
+  view:
+    primary: title
+    fields:
+    - title
+    - image
+    - order
+    sort:
+    - order
+    - title
+    search:
+    - title
+    default:
+      sort: order
+      order: asc
+  fields:
+  - name: title
+    label: Topic title
+    type: string
+    required: true
+  - name: order
+    label: Display order
+    type: number
+    default: 100
+    required: true
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    options:
+      min: 0
+      step: 1
+  - name: body
+    label: Research description
+    type: rich-text
+    options:
+      format: html
+      switcher: false
+      media: images
+      path: images/research
+      rename: safe
+  - name: image
+    label: Illustration
+    type: image
+    options:
+      media: images
+      path: images/research
+      rename: safe
+  - name: image_alt
+    label: Illustration description
+    type: string
+    description: Describe the image for readers using assistive technology.
+  - name: image_caption
+    label: Illustration caption
+    type: string
+- name: publications
+  label: Publications
+  type: collection
+  path: _publications
+  format: yaml-frontmatter
+  filename:
+    template: '{fields.year}-{primary}.md'
+    field: false
+  operations:
+    rename: false
+  view:
+    primary: title
+    fields:
+    - title
+    - year
+    - journal
+    - order
+    sort:
+    - order
+    - title
+    search:
+    - title
+    default:
+      sort: order
+      order: asc
+  fields:
+  - name: title
+    label: Paper title
+    type: string
+    required: true
+    options:
+      maxlength: 210
+  - name: authors
+    label: Authors
+    type: string
+    required: true
+    description: 'Keep authors in publication order; use * or # for contribution markers.'
+  - name: year
+    label: Publication year
+    type: number
+    required: true
+    options:
+      min: 1900
+      max: 2200
+      step: 1
+  - name: journal
+    label: Journal / venue
+    type: string
+    required: true
+  - name: details
+    label: Volume, issue, pages or article number
+    type: string
+  - name: article_url
+    label: Article link
+    type: string
+    description: Paste the article URL or DOI URL.
+  - name: article_label
+    label: Article link text
+    type: string
+    default: Article
+  - name: pmid
+    label: PubMed ID
+    type: string
+    description: Optional numeric ID; leave blank if unavailable.
+  - name: order
+    label: Display order
+    type: number
+    default: 100
+    required: true
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    options:
+      min: 0
+      step: 1
+  - name: links
+    label: Highlights and related links
+    type: object
+    list: true
+    fields:
+    - name: label
+      label: Link text
+      type: string
+      required: true
+    - name: url
+      label: Link address
+      type: string
+      required: true
+      description: Use https:// for another website, or a site path such as /research/.
+  - name: body
+    label: Contribution notes / additional information
+    type: rich-text
+    options:
+      format: html
+      switcher: false
+      media: images
+      path: images
+      rename: safe
+- name: photos
+  label: Lab Photos
+  type: collection
+  path: _photos
+  format: yaml-frontmatter
+  filename:
+    template: '{year}-{month}-{day}-{hour}{minute}{second}-{primary}.md'
+    field: false
+  operations:
+    rename: false
+  view:
+    primary: title
+    fields:
+    - title
+    - image
+    - date_label
+    - order
+    sort:
+    - order
+    - title
+    search:
+    - title
+    default:
+      sort: order
+      order: asc
+  fields:
+  - name: title
+    label: Photo title
+    type: string
+    required: true
+    description: A short title to find this photo in the CMS.
+  - name: image
+    label: Photo
+    type: image
+    options:
+      media: images
+      path: images/lab-photos
+      rename: safe
+    required: true
+  - name: date_label
+    label: Date shown on website
+    type: string
+    description: 'For example: May 2026, or December 12, 2026.'
+  - name: body
+    label: Caption
+    type: rich-text
+    options:
+      format: html
+      switcher: false
+      media: images
+      path: images/lab-photos
+      rename: safe
+  - name: alt
+    label: Image description
+    type: string
+    description: Briefly describe the scene for accessibility.
+  - name: order
+    label: Display order
+    type: number
+    default: 100
+    required: true
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    options:
+      min: 0
+      step: 1
+- name: awards
+  label: Awards
+  type: collection
+  path: _awards
+  format: yaml-frontmatter
+  filename:
+    template: '{primary}.md'
+    field: false
+  operations:
+    rename: false
+  view:
+    primary: name
+    fields:
+    - name
+    - order
+    sort:
+    - order
+    - name
+    search:
+    - name
+    default:
+      sort: order
+      order: asc
+  fields:
+  - name: name
+    label: Recipient
+    type: string
+    required: true
+  - name: order
+    label: Display order
+    type: number
+    default: 100
+    required: true
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    options:
+      min: 0
+      step: 1
+  - name: body
+    label: Awards and fellowships
+    type: rich-text
+    options:
+      format: html
+      switcher: false
+      media: images
+      path: images
+      rename: safe
+- name: contact
+  label: Lab contact details
+  type: file
+  path: _data/contact.json
+  format: json
+  fields:
+  - name: emails
+    label: Lab email addresses
+    type: object
+    list: true
+    fields:
+    - name: label
+      label: Display text
+      type: string
+    - name: address
+      label: Email address
+      type: string
+      required: true
+  - name: address_lines
+    label: Postal address lines
+    type: string
+    list: true
+  - name: maps_url
+    label: Map link
+    type: string
+  - name: links
+    label: Footer links
+    type: object
+    list: true
+    fields:
+    - name: label
+      label: Link text
+      type: string
+      required: true
+    - name: url
+      label: Link address
+      type: string
+      required: true
+      description: Use https:// for another website, or a site path such as /research/.
+- name: settings
+  label: Website settings & navigation
+  type: file
+  path: _data/settings.json
+  format: json
+  fields:
+  - name: title
+    label: Website name
+    type: string
+    required: true
+  - name: subtitle
+    label: Tagline
+    type: string
+  - name: description
+    label: Search engine description
+    type: text
+  - name: logo
+    label: Header logo
+    type: image
+    options:
+      media: images
+      path: images
+      rename: safe
+  - name: logo_alt
+    label: Logo description
+    type: string
+  - name: favicon
+    label: Browser icon
+    type: image
+    options:
+      media: images
+      path: images
+      rename: safe
+  - name: share_image
+    label: Social sharing image
+    type: image
+    options:
+      media: images
+      path: images
+      rename: safe
+  - name: header_image
+    label: Header background
+    type: image
+    options:
+      media: images
+      path: images
+      rename: safe
+  - name: footer_image
+    label: Footer background
+    type: image
+    options:
+      media: images
+      path: images
+      rename: safe
+  - name: illustration_credit
+    label: Illustration credit
+    type: string
+  - name: copyright_name
+    label: Copyright holder
+    type: string
+  - name: contact_link_label
+    label: Footer contact link text
+    type: string
+  - name: show_theme_credit
+    label: Show template credit
+    type: boolean
+  - name: navigation
+    label: Main navigation
+    type: object
+    list: true
+    description: Drag entries to reorder. Changing a label does not change a page URL.
+    fields:
+    - name: label
+      label: Menu label
+      type: string
+      required: true
+    - name: url
+      label: Destination
+      type: string
+      required: true
+      description: Use a site path, e.g. /team/ or /join-us/.
+    - name: visible
+      label: Show in menu
+      type: boolean
+      default: true
+- name: extra_custom_pages
+  label: Additional pages
+  type: collection
+  path: _custom_pages
+  format: yaml-frontmatter
+  filename:
+    template: '{primary}.md'
+    field: false
+  operations:
+    rename: false
+  view:
+    primary: title
+    fields:
+    - title
+    sort:
+    - title
+    search:
+    - title
+    default:
+      sort: title
+      order: asc
+  fields:
+  - name: title
+    label: Page title
+    type: string
+    required: true
+  - name: body
+    label: Page content
+    type: rich-text
+    options:
+      format: html
+      switcher: false
+      media: images
+      path: images
+      rename: safe
+  - name: description
+    label: Search engine description
+    type: text
+settings:
+  config: false

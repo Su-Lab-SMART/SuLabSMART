@@ -1,20 +1,11 @@
 ---
-title: Contact
 ---
-
-# {% include icon.html icon="fa-regular fa-envelope" %}Contact
-
-The Su Lab is based at the Shenzhen Medical Academy of Research and Translation (SMART). For research inquiries, contact the principal investigator, Chih-Ying Su.
-
-## Email
-
-- [chihyingsu@gmail.com](mailto:chihyingsu@gmail.com)
-- [suchihying@smart.org.cn](mailto:suchihying@smart.org.cn)
-
+{% assign info = site.data.pages.contact %}
+<h1>{{ info.heading | escape }}</h1>
+{{ info.introduction | render_content }}
+<h2>{{ info.email_heading | escape }}</h2>
+<ul>{% for email in site.data.contact.emails %}<li><a href="mailto:{{ email.address | escape }}">{{ email.label | default: email.address | escape }}</a></li>{% endfor %}</ul>
 {% include section.html %}
-
-## Location
-
-Guangming Life Science Park, Xinhu Subdistrict, Guangming District, Shenzhen, Guangdong, China.
-
-[View the location on Google Maps](https://maps.google.com/?q=Guangming+Life+Science+Park%2C+Xinhu+Subdistrict%2C+Guangming+District%2C+Shenzhen%2C+Guangdong%2C+China)
+<h2>{{ info.location_heading | escape }}</h2>
+<p>{% for line in site.data.contact.address_lines %}{{ line | escape }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}</p>
+{% if site.data.contact.maps_url != '' %}<p><a href="{{ site.data.contact.maps_url | escape }}">{{ info.maps_label | escape }}</a></p>{% endif %}

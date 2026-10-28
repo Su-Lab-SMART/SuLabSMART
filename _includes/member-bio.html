@@ -1,12 +1,14 @@
 {% assign member = include.member %}
-<article class="member-bio">
+<article class="member-bio{% if member.image == '' or member.image == nil %} member-bio-text-only{% endif %}">
+  {% if member.image and member.image != '' %}
   <a class="member-photo" href="{{ member.url | relative_url }}" aria-label="Read {{ member.name | escape }}'s profile">
     <img src="{{ member.image | relative_url }}" alt="{{ member.name | escape }}" loading="lazy">
   </a>
+  {% endif %}
   <div class="member-details">
-    <h2><a href="{{ member.url | relative_url }}">{{ member.name }}</a></h2>
-    <p class="member-role">{{ member.description }}</p>
-    <p><a href="mailto:{{ member.links.email | escape }}">{{ member.links.email }}</a>{% if member.role == 'principal-investigator' %} · <a href="mailto:suchihying@smart.org.cn">suchihying@smart.org.cn</a>{% endif %}</p>
-    {{ member.content | markdownify }}
+    <h2><a href="{{ member.url | relative_url }}">{{ member.name | escape }}</a></h2>
+    <p class="member-role">{{ member.description | escape }}</p>
+    <p>{% for email in member.emails %}<a href="mailto:{{ email | escape }}">{{ email | escape }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
+    {{ member.content | render_content }}
   </div>
 </article>
