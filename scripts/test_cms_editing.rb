@@ -32,7 +32,7 @@ begin
   record.call("_publications/cms-integration-fixture.md", {"title" => "CMS Integration Paper", "authors" => "Test Author", "year" => 2099, "journal" => "Test Journal", "order" => 0}, '')
   record.call("_research/cms-integration-fixture.md", {"title" => "CMS Integration Research", "order" => 0}, '<p>Editable scientific description.</p>')
   record.call("_awards/cms-integration-fixture.md", {"name" => "CMS Integration Award", "order" => 0}, '<p>New award details.</p>')
-  record.call("_pages/cms-integration-fixture.md", {"title" => "CMS Integration Page"}, '<p>A new standalone page.</p>')
+  record.call("_custom_pages/cms-integration-fixture.md", {"title" => "CMS Integration Page"}, '<p>A new standalone page.</p>')
   Dir.mktmpdir("sulab-cms-editing-") do |destination|
     site = Jekyll::Site.new(Jekyll.configuration({"source" => root, "destination" => destination, "baseurl" => "/SuLabTest1022", "quiet" => true}))
     site.process

@@ -1,5 +1,5 @@
 ---
-title: Population-level morphological analysis of paired CO2- and odor-sensing olfactory neurons in D. melanogaster via volume electron microscopy
+title: Population-level morphological analysis of paired CO₂- and odor-sensing olfactory neurons in D. melanogaster via volume electron microscopy
 authors: Choy*, J, Charara*, S, Cauwenberghs, K, McKaughan, Q, Kim, K-Y, Ellisman, MH, Su, C-Y
 year: 2025
 journal: eLife

@@ -719,10 +719,10 @@ content:
       label: Show in menu
       type: boolean
       default: true
-- name: extra_pages
+- name: extra_custom_pages
   label: Additional pages
   type: collection
-  path: _pages
+  path: _custom_pages
   format: yaml-frontmatter
   filename:
     template: '{primary}.md'

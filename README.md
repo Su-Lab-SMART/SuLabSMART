@@ -24,6 +24,6 @@ See [MIGRATION.md](MIGRATION.md) for source inventory and current/alumni members
 
 ## Content management
 
-Use [Pages CMS](https://app.pagescms.org/) with the `main` branch. English forms are configured in `.pages.yml`. See [EDITOR_GUIDE.md](EDITOR_GUIDE.md) for account setup, content editing, image uploads, publishing, and recovery. Content lives in `_data/pages`, `_data/settings.json`, `_data/contact.json`, and the `_members`, `_research`, `_publications`, `_photos`, `_awards`, and `_pages` collections. Page templates contain layout only.
+Use [Pages CMS](https://app.pagescms.org/) with the `main` branch. English forms are configured in `.pages.yml`. See [EDITOR_GUIDE.md](EDITOR_GUIDE.md) for account setup, content editing, image uploads, publishing, and recovery. Content lives in `_data/pages`, `_data/settings.json`, `_data/contact.json`, and the `_members`, `_research`, `_publications`, `_photos`, `_awards`, and `_custom_pages` collections. Page templates contain layout only.
 
 After a local build, run `bundle exec ruby scripts/check_content.rb` to check CMS field coverage and generated links.

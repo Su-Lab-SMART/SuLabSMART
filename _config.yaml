@@ -13,7 +13,7 @@ defaults:
   values:
     layout: post
 - scope:
-    type: pages
+    type: custom_pages
   values:
     layout: content-page
 collections:
@@ -29,7 +29,7 @@ collections:
     output: false
   awards:
     output: false
-  pages:
+  custom_pages:
     output: true
     permalink: /pages/:name/
 plugins:

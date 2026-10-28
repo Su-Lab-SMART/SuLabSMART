@@ -1,5 +1,5 @@
 ---
-title: Distinct roles and synergistic function of FruM isoforms in Drosophila olfactory receptor neurons
+title: Distinct roles and synergistic function of Fruᴹ isoforms in Drosophila olfactory receptor neurons
 authors: Zhang, Y, Ng, R, Neville, MC, Goodwin, SF, Su, C-Y
 year: 2020
 journal: Cell Reports

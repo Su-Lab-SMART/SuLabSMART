@@ -1,5 +1,5 @@
 ---
-title: Morphological specializations of mosquito CO2- sensing olfactory receptor neurons
+title: Morphological specializations of mosquito CO₂- sensing olfactory receptor neurons
 authors: Charara*, S, Choy*, J, Cauwenberghs, K, Vijayakumar, P, Ng, R, Kim, K-Y, Weng, S-C, Akbari, OS, Ellisman, MH, Rifkin, SA, Su, C-Y
 year: 2025
 journal: Proc Natl Acad Sci USA

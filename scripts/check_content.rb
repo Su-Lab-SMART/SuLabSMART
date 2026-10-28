@@ -58,6 +58,7 @@ site = File.join(root, "_site")
 base = "/SuLabTest1022"
 Dir.glob("#{site}/**/*.html").each do |file|
   document = Nokogiri::HTML(File.read(file))
+  errors << "Repeated page heading: #{file}" if document.css("main h1").length > 1
   document.css("a[href], img[src], link[href], script[src]").each do |element|
     url = element["href"] || element["src"]
     next if url.nil? || url.empty? || url.start_with?("#", "//") || url.match?(%r{\A[a-zA-Z][a-zA-Z0-9+.-]*:})
@@ -74,6 +75,10 @@ Dir.glob("#{site}/**/*.html").each do |file|
     errors << "Broken local resource: #{file}: #{url}" unless File.exist?(target)
   end
   document.css('script[type="application/ld+json"]').each { |script| JSON.parse(script.text) }
+end
+
+Dir.glob("#{site}/_styles/*.css").each do |file|
+  errors << "HTML layout leaked into CSS: #{file}" if File.read(file).match?(/<!DOCTYPE|<html|<header/i)
 end
 
 checks = {"team/index.html" => [".member-bio", Dir.glob("_members/*.md").count { |path| File.read(path).match?(/^status: current$/) }], "lab-photos/index.html" => [".lab-photo", Dir.glob("_photos/*.md").length], "publications/index.html" => [".publication-entry", Dir.glob("_publications/*.md").length]}
