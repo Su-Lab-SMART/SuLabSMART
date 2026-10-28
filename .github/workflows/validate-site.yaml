@@ -1,0 +1,17 @@
+name: Validate website
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      - name: Build with GitHub Pages subpath
+        run: bundle exec jekyll build --baseurl '/SuLabTest1022'

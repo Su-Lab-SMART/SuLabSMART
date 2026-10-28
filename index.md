@@ -1,21 +1,21 @@
 ---
+title: Home
+nav:
+  order: 1
 ---
 
 # Welcome to the Su Lab at SMART
 
-The Su Lab studies how animals sense and process odors. We focus on olfactory receptor neurons (ORNs) in *Drosophila* and ask how sensory signals are shaped before they reach the brain.
+<h2>Insect Olfaction</h2>
 
-Olfaction helps animals find food and mates while avoiding danger. It also guides disease-carrying insects toward human hosts. Our work examines how neuromodulation changes ORN responses and how interactions between neighboring neurons shape odor coding and behavior.
+<h2>The sense of smell is one of the most intriguing senses: animals detect and discriminate an almost limitless number of odors in order to find food and mates while avoiding predators. Furthermore, olfaction directly impacts our personal well-being, as insect disease vectors rely on olfaction to seek human hosts.</h2>
+
+<h2>Olfactory receptor neurons (ORNs) are the primary source of sensory input, and our research addresses how ORNs process odor information. We are especially interested in how neuromodulation can act on ORNs to regulate responses and influence odor-guided behaviors. We also investigate how compartmentalization allows ORNs to process information through ephaptic interaction.</h2>
 
 ## Explore the lab
 
-- [Research directions]({{ "/research/" | relative_url }}) — sensory coding, signal amplification, and interactions between olfactory neurons.
-- [Meet the team]({{ "/team/" | relative_url }}) — current members of the Su Lab.
-- [Selected publications]({{ "/publications/" | relative_url }}) — recent work from the lab.
-- [Contact and location]({{ "/contact/" | relative_url }}) — reach the lab at SMART in Shenzhen.
-
-## Contact
-
-**Chih-Ying Su** · Senior Principal Investigator, Shenzhen Medical Academy of Research and Translation (SMART)
-
-[chihyingsu@gmail.com](mailto:chihyingsu@gmail.com) · [suchihying@smart.org.cn](mailto:suchihying@smart.org.cn)
+- [Research]({{ '/research/' | relative_url }})
+- [People]({{ '/team/' | relative_url }})
+- [Publications]({{ '/publications/' | relative_url }})
+- [Lab Photos]({{ '/lab-photos/' | relative_url }})
+- [Join Us]({{ '/join-us/' | relative_url }})
