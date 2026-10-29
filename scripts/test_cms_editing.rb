@@ -41,7 +41,8 @@ begin
     assert.call(home_page.at_css('img[alt="CMS upload"]')["src"] == "/SuLabSMART/images/background.jpg", "Rich-text upload path is incorrect")
     assert.call(home_page.at_css('img[alt="Already prefixed"]')["src"] == "/SuLabSMART/images/icon.png", "Image subpath was duplicated")
     assert.call(home_page.at_css('a[href="/SuLabSMART/team/"]'), "Rich-text internal link was not resolved")
-    assert.call(home_page.text.include?("CO₂, Fruᴹꟲ"), "Scientific characters changed")
+    assert.call(home_page.text.include?("CO₂, FruMC"), "Scientific characters changed")
+    assert.call(home_page.css("sup").any? { |node| node.text == "MC" }, "Fru isoform must use ordinary letters in a true superscript")
     assert.call(home_page.at_css("header nav a").text.strip == "Join Us", "Navigation ordering was not applied")
     JSON.parse(home_page.at_css('script[type="application/ld+json"]').text)
     people = page.call("team/index.html")
@@ -52,6 +53,12 @@ begin
     assert.call(page.call("lab-photos/index.html").at_css(".lab-photo").text.include?("A new caption"), "New photo / caption / ordering missing")
     assert.call(page.call("publications/index.html").at_css(".publication-entry").text.include?("CMS Integration Paper"), "New publication / year grouping missing")
     assert.call(page.call("research/index.html").text.include?("CMS Integration Research"), "New research topic missing")
+    research_page = page.call("research/index.html")
+    %w[M MA MB MC].each do |isoform|
+      assert.call(research_page.css("sup").any? { |node| node.text == isoform }, "Missing Fru superscript: #{isoform}")
+    end
+    assert.call(!research_page.text.match?(/[ᴹᴬᴮꟲ]/), "Inconsistent modifier-letter superscripts remain")
+    assert.call(research_page.css("sup sup").empty?, "Superscripts were nested")
     assert.call(page.call("pages/cms-integration-fixture/index.html").text.include?("A new standalone page"), "New standalone page missing")
     assert.call(File.file?(File.join(destination, "members/pawel-vijayakumar.html")), "Existing member URL changed")
   end
