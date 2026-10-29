@@ -28,6 +28,23 @@ module SuLab
       site = @context.registers[:site]
       rendered = site.find_converter_instance(Jekyll::Converters::Markdown).convert(value.to_s)
       fragment = Nokogiri::HTML.fragment(rendered)
+      # Modifier letters have inconsistent font coverage (especially capital C).
+      # Render the CMS-safe notation using ordinary letters in a true superscript.
+      fragment.xpath(".//text()").each do |node|
+        next if node.ancestors.any? { |ancestor| %w[sup code pre script style].include?(ancestor.name) }
+        next unless node.text.match?(/ᴹ[ᴬᴮꟲ]?/)
+        replacement = Nokogiri::HTML::DocumentFragment.new(fragment.document)
+        node.text.split(/(ᴹ[ᴬᴮꟲ]?)/).each do |part|
+          if part.match?(/\Aᴹ[ᴬᴮꟲ]?\z/)
+            superscript = Nokogiri::XML::Node.new("sup", fragment.document)
+            superscript.content = part.tr("ᴹᴬᴮꟲ", "MABC")
+            replacement.add_child(superscript)
+          else
+            replacement.add_child(Nokogiri::XML::Text.new(part, fragment.document))
+          end
+        end
+        node.replace(replacement)
+      end
       fragment.css("[src], [href]").each do |node|
         %w[src href].each do |attribute|
           path = node[attribute]
