@@ -1,1 +1,1 @@
-Sitemap: https://hanjabolgo.github.io/SuLabTest1022/sitemap.xml
+Sitemap: https://su-lab-smart.github.io/SuLabSMART/sitemap.xml
