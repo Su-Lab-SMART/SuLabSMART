@@ -23,7 +23,7 @@ begin
   settings["navigation"].reverse!
   write.call("_data/settings.json", JSON.pretty_generate(settings))
   home = JSON.parse(File.read("_data/pages/home.json"))
-  home["introduction"] = '<p>CMS edit — CO₂, Fruᴹꟲ. <a href="/team/">People</a></p><p><img src="/images/background.jpg" alt="CMS upload"></p><p><img src="/SuLabTest1022/images/icon.png" alt="Already prefixed"></p>'
+  home["introduction"] = '<p>CMS edit — CO₂, Fruᴹꟲ. <a href="/team/">People</a></p><p><img src="/images/background.jpg" alt="CMS upload"></p><p><img src="/SuLabSMART/images/icon.png" alt="Already prefixed"></p>'
   write.call("_data/pages/home.json", JSON.pretty_generate(home))
   # A former current member should move groups without changing their URL.
   write.call("_members/pawel-vijayakumar.md", File.read("_members/pawel-vijayakumar.md").sub("status: current", "status: alumni"))
@@ -34,13 +34,13 @@ begin
   record.call("_awards/cms-integration-fixture.md", {"name" => "CMS Integration Award", "order" => 0}, '<p>New award details.</p>')
   record.call("_custom_pages/cms-integration-fixture.md", {"title" => "CMS Integration Page"}, '<p>A new standalone page.</p>')
   Dir.mktmpdir("sulab-cms-editing-") do |destination|
-    site = Jekyll::Site.new(Jekyll.configuration({"source" => root, "destination" => destination, "baseurl" => "/SuLabTest1022", "quiet" => true}))
+    site = Jekyll::Site.new(Jekyll.configuration({"source" => root, "destination" => destination, "baseurl" => "/SuLabSMART", "quiet" => true}))
     site.process
     page = lambda { |path| Nokogiri::HTML(File.read(File.join(destination, path))) }
     home_page = page.call("index.html")
-    assert.call(home_page.at_css('img[alt="CMS upload"]')["src"] == "/SuLabTest1022/images/background.jpg", "Rich-text upload path is incorrect")
-    assert.call(home_page.at_css('img[alt="Already prefixed"]')["src"] == "/SuLabTest1022/images/icon.png", "Image subpath was duplicated")
-    assert.call(home_page.at_css('a[href="/SuLabTest1022/team/"]'), "Rich-text internal link was not resolved")
+    assert.call(home_page.at_css('img[alt="CMS upload"]')["src"] == "/SuLabSMART/images/background.jpg", "Rich-text upload path is incorrect")
+    assert.call(home_page.at_css('img[alt="Already prefixed"]')["src"] == "/SuLabSMART/images/icon.png", "Image subpath was duplicated")
+    assert.call(home_page.at_css('a[href="/SuLabSMART/team/"]'), "Rich-text internal link was not resolved")
     assert.call(home_page.text.include?("CO₂, Fruᴹꟲ"), "Scientific characters changed")
     assert.call(home_page.at_css("header nav a").text.strip == "Join Us", "Navigation ordering was not applied")
     JSON.parse(home_page.at_css('script[type="application/ld+json"]').text)

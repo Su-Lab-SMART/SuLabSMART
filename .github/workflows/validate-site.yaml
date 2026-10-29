@@ -14,7 +14,7 @@ jobs:
           ruby-version: '3.1'
           bundler-cache: true
       - name: Build with GitHub Pages subpath
-        run: bundle exec jekyll build --baseurl '/SuLabTest1022'
+        run: bundle exec jekyll build --baseurl '/SuLabSMART'
       - name: Validate editable content and generated links
         run: bundle exec ruby scripts/check_content.rb
       - name: Exercise content-only CMS edits

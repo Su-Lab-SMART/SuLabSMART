@@ -55,7 +55,7 @@ entries.each do |entry|
 end
 
 site = File.join(root, "_site")
-base = "/SuLabTest1022"
+base = "/SuLabSMART"
 Dir.glob("#{site}/**/*.html").each do |file|
   document = Nokogiri::HTML(File.read(file))
   errors << "Repeated page heading: #{file}" if document.css("main h1").length > 1

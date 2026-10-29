@@ -2,9 +2,9 @@
 
 ## Open the editor
 
-Go to https://app.pagescms.org/ and sign in. The repository owner must first connect the Pages CMS GitHub App to **hanjabolgo/SuLabTest1022**. Select this repository and the **main** branch. English forms will appear automatically.
+Go to https://app.pagescms.org/ and sign in. The repository owner must first connect the Pages CMS GitHub App to **Su-Lab-SMART/SuLabSMART**. Select this repository and the **main** branch. English forms will appear automatically.
 
-For this website, saving to main triggers the existing GitHub Actions build and Pages deployment. Allow a few minutes, then refresh the website. A successful save means the content is stored; it does not mean deployment has finished. If an update is missing, check https://github.com/hanjabolgo/SuLabTest1022/actions before saving again.
+For this website, saving to main triggers the existing GitHub Actions build and Pages deployment. Allow a few minutes, then refresh the website. A successful save means the content is stored; it does not mean deployment has finished. If an update is missing, check https://github.com/Su-Lab-SMART/SuLabSMART/actions before saving again.
 
 ## What you can edit
 
@@ -22,9 +22,9 @@ For this website, saving to main triggers the existing GitHub Actions build and 
 
 Use the rich-text toolbar or the `/` command menu to format text, add links, or insert images. No HTML, Liquid, YAML, Git commands, or terminal login is needed for ordinary editing. Source-mode switching is hidden. Scientific Unicode characters such as CO₂ and Fruᴹ can be copied and pasted; they remain editable as text.
 
-The Image library supports browsing and uploads. Use the image picker inside the specific record to upload **and attach** a picture. Uploading to the library alone does not add a gallery entry. Pictures are stored in this repository; the site resolves their paths automatically under `/SuLabTest1022/`. Use useful alternative descriptions for accessibility.
+The Image library supports browsing and uploads. Use the image picker inside the specific record to upload **and attach** a picture. Uploading to the library alone does not add a gallery entry. Pictures are stored in this repository; the site resolves their paths automatically under `/SuLabSMART/`. Use useful alternative descriptions for accessibility.
 
-For external links paste a full `https://...` address. For a page on this site, use a path such as `/research/`, `/team/`, or `/pages/lab-resources/`, without the `/SuLabTest1022` prefix. Use the link picker / toolbar for links inside rich text.
+For external links paste a full `https://...` address. For a page on this site, use a path such as `/research/`, `/team/`, or `/pages/lab-resources/`, without the `/SuLabSMART` prefix. Use the link picker / toolbar for links inside rich text.
 
 ## Publishing and recovery
 

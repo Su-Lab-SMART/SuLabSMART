@@ -1,12 +1,12 @@
-Visit **[hanjabolgo.github.io/SuLabTest1022](https://hanjabolgo.github.io/SuLabTest1022)** 🚀
+Visit **[su-lab-smart.github.io/SuLabSMART](https://su-lab-smart.github.io/SuLabSMART)** 🚀
 
-# Su Lab at SMART website
+# SuLabSMART website
 
 The lab website is built with the [Lab Website Template](https://github.com/greenelab/lab-website-template), Jekyll, and GitHub Actions.
 
 ## Publishing
 
-The live site is intended to be published at <https://hanjabolgo.github.io/SuLabTest1022/>. The `main` branch contains the Jekyll source. On each push, GitHub Actions builds the site and deploys the generated files to `gh-pages`; GitHub Pages should publish the root of that branch.
+The live site is intended to be published at <https://su-lab-smart.github.io/SuLabSMART/>. The `main` branch contains the Jekyll source. On each push, GitHub Actions builds the site and deploys the generated files to `gh-pages`; GitHub Pages should publish the root of that branch.
 
 To enable publishing in GitHub, open **Settings → Pages**, choose **Deploy from a branch**, select **gh-pages** and **/(root)**, then save. The first successful Actions run creates the publishing branch.
 
