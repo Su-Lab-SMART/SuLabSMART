@@ -9,6 +9,9 @@ article_label: Article
 pmid: '23766319'
 order: 28
 links: []
+zh:
+  translation_status: draft
+  body: "<p>(观点文章)</p>"
 ---
 
 <p>(Perspective)</p>

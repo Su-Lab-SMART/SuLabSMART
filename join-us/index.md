@@ -1,6 +1,6 @@
 ---
 ---
-{% assign info = site.data.pages.join %}
+{% assign info = site.data.pages.join | localize_page: 'join' %}
 <h1>{{ info.heading | escape }}</h1>
 <h2>{{ info.section_heading | escape }}</h2>
 {{ info.introduction | render_content }}

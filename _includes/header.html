@@ -1,3 +1,4 @@
+{% assign settings = site.data.settings | bilingual_record %}
 {% assign image = page.header | default: site.header %}
 {% assign dark = page.header-dark | is_nil: site.header-dark | is_nil: true %}
 
@@ -9,23 +10,23 @@
   {% if dark == true or dark == false %}
     data-dark="{{ dark }}"
   {% endif %}
-  {% if page.url == "/" %}
+  {% if page.url == "/" or page.url == "/zh/" %}
     data-big
   {% endif %}
 >
-  <a href="{{ "/" | relative_url }}" class="home">
+  <a href="{{ "/" | localized_url | relative_url }}" class="home">
     {% if logo and logo != '' %}
       <span class="logo">
-        <img src="{{ logo | relative_url | escape }}" alt="{{ site.data.settings.logo_alt | escape }}">
+        <img src="{{ logo | relative_url | escape }}" alt="{{ settings.logo_alt | escape }}">
       </span>
     {% endif %}
     {% if site.logo-text != false %}
       <span class="title-text" data-tooltip="Home">
         {% if site.title and site.show-title != false %}
-          <span class="title">{{ site.title }}</span>
+          <span class="title">{{ settings.title | escape }}</span>
         {% endif %}
         {% if site.subtitle and site.show-subtitle != false %}
-          <span class="subtitle">{{ site.subtitle }}</span>
+          <span class="subtitle">{{ settings.subtitle | escape }}</span>
         {% endif %}
       </span>
     {% endif %}
@@ -35,7 +36,8 @@
 
   <nav>
     {% for link in site.data.settings.navigation %}
-      {% if link.visible %}<a href="{{ link.url | relative_url | escape }}">{{ link.label | escape }}</a>{% endif %}
+      {% if link.visible %}<a href="{{ link.url | localized_url | relative_url | escape }}">{% if page.lang == "zh" %}{{ link.label_zh | default: link.label | escape }}{% else %}{{ link.label | escape }}{% endif %}</a>{% endif %}
     {% endfor %}
+    {% if page.alternate_url %}<a class="language-switch" href="{{ page.alternate_url | relative_url }}" lang="{{ page.alternate_lang }}" hreflang="{{ page.alternate_lang }}" aria-label="{% if page.lang == 'zh' %}Switch to English{% else %}切换到简体中文{% endif %}">{% if page.lang == 'zh' %}English{% else %}简体中文{% endif %}</a>{% endif %}
   </nav>
 </header>

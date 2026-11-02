@@ -1,6 +1,7 @@
 ---
 title: Morphological specializations of mosquito CO₂- sensing olfactory receptor neurons
-authors: Charara*, S, Choy*, J, Cauwenberghs, K, Vijayakumar, P, Ng, R, Kim, K-Y, Weng, S-C, Akbari, OS, Ellisman, MH, Rifkin, SA, Su, C-Y
+authors: Charara*, S, Choy*, J, Cauwenberghs, K, Vijayakumar, P, Ng, R, Kim, K-Y,
+  Weng, S-C, Akbari, OS, Ellisman, MH, Rifkin, SA, Su, C-Y
 year: 2025
 journal: Proc Natl Acad Sci USA
 details: 122 (43) e2514666122
@@ -13,6 +14,9 @@ links:
   url: https://www.pnas.org/doi/10.1073/iti4325122
 - label: UCSD highlight
   url: https://today.ucsd.edu/story/researchers-uncover-previously-unexplored-details-of-mosquitos-specialized-detection-mechanisms
+zh:
+  translation_status: draft
+  body: "<p>(*共同第一作者)</p>"
 ---
 
 <p>(*first authors)</p>

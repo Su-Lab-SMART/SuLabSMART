@@ -1,3 +1,4 @@
+{% assign settings = site.data.settings | bilingual_record %}
 {% assign filename = page.path | split: "/" | last %}
 {% if page.name and page.name != filename %}
   {% assign title = page.name %}
@@ -14,21 +15,21 @@
 {% if title and title != "" %}
   {% assign fulltitle = fulltitle | push: title %}
 {% endif %}
-{% if site.title and site.title != "" %}
-  {% assign fulltitle = fulltitle | push: site.title %}
+{% if settings.title and settings.title != "" %}
+  {% assign fulltitle = fulltitle | push: settings.title %}
 {% endif %}
 {% assign fulltitle = fulltitle | join: " | " %}
 
-{% assign subtitle = site.subtitle %}
+{% assign subtitle = settings.subtitle %}
 
-{% assign description = page.description | default: site.description %}
-{% if site.subtitle %}
+{% assign description = page.description | default: settings.description %}
+{% if settings.subtitle %}
   {% capture description -%}
-    {{ site.subtitle }}. {{ description }}
+    {{ settings.subtitle }}. {{ description }}
   {%- endcapture %}
 {% endif %}
 {% capture url -%}
-  {{ site.url }}{{ site.baseurl }}
+  {{ page.url | absolute_url }}
 {%- endcapture %}
 
 {% assign json_description = description %}
@@ -52,11 +53,11 @@
 <meta name="description" content="{{ description }}">
 
 <meta property="og:title" content="{{ title }}">
-<meta property="og:site_title" content="{{ site.title | xml_escape }}">
+<meta property="og:site_title" content="{{ settings.title | xml_escape }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:url" content="{{ url }}">
 <meta property="og:image" content="{{ share }}">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="{% if page.lang == 'zh' %}zh_CN{% else %}en_US{% endif %}">
 
 <meta property="twitter:title" content="{{ title }}">
 <meta property="twitter:description" content="{{ description }}">
@@ -95,3 +96,6 @@
 </script>
 
 <link rel="alternate" type="application/rss+xml" href="{{ feed }}">
+
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+{% if page.english_url %}<link rel="alternate" hreflang="en" href="{{ page.english_url | absolute_url }}"><link rel="alternate" hreflang="zh-Hans" href="{{ page.chinese_url | absolute_url }}"><link rel="alternate" hreflang="x-default" href="{{ page.english_url | absolute_url }}">{% endif %}

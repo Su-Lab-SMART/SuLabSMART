@@ -30,7 +30,7 @@ begin
   record.call("_members/cms-integration-fixture.md", {"name" => "CMS Integration Member", "description" => "Researcher", "status" => "current", "order" => 0, "image" => "/images/icon.png", "emails" => ["test@example.org"]}, '<p>A <strong>formatted biography</strong>.</p>')
   record.call("_photos/cms-integration-fixture.md", {"title" => "CMS Integration Photo", "image" => "/images/background.jpg", "alt" => "CMS fixture", "date_label" => "October 2026", "order" => 0}, '<p>A new caption.</p>')
   record.call("_publications/cms-integration-fixture.md", {"title" => "CMS Integration Paper", "authors" => "Test Author", "year" => 2099, "journal" => "Test Journal", "order" => 0}, '')
-  record.call("_research/cms-integration-fixture.md", {"title" => "CMS Integration Research", "order" => 0}, '<p>Editable scientific description.</p>')
+  record.call("_research/cms-integration-fixture.md", {"title" => "CMS Integration Research", "order" => 0, "zh" => {"title" => "中文研究测试", "body" => '<p>中文说明 <a href="/team/">成员</a><img src="/images/icon.png" alt="Chinese upload"></p>'}}, '<p>Editable scientific description.</p>')
   record.call("_awards/cms-integration-fixture.md", {"name" => "CMS Integration Award", "order" => 0}, '<p>New award details.</p>')
   record.call("_custom_pages/cms-integration-fixture.md", {"title" => "CMS Integration Page"}, '<p>A new standalone page.</p>')
   Dir.mktmpdir("sulab-cms-editing-") do |destination|
@@ -53,6 +53,10 @@ begin
     assert.call(page.call("lab-photos/index.html").at_css(".lab-photo").text.include?("A new caption"), "New photo / caption / ordering missing")
     assert.call(page.call("publications/index.html").at_css(".publication-entry").text.include?("CMS Integration Paper"), "New publication / year grouping missing")
     assert.call(page.call("research/index.html").text.include?("CMS Integration Research"), "New research topic missing")
+    chinese_research = page.call("zh/research/index.html")
+    assert.call(chinese_research.text.include?("中文研究测试"), "CMS Chinese title edit missing")
+    assert.call(chinese_research.at_css('a[href="/SuLabSMART/zh/team/"]'), "Chinese rich-text internal link not localized")
+    assert.call(chinese_research.at_css('img[alt="Chinese upload"]')["src"] == "/SuLabSMART/images/icon.png", "Chinese rich-text image incorrectly localized")
     research_page = page.call("research/index.html")
     %w[M MA MB MC].each do |isoform|
       assert.call(research_page.css("sup").any? { |node| node.text == isoform }, "Missing Fru superscript: #{isoform}")
@@ -61,6 +65,12 @@ begin
     assert.call(research_page.css("sup sup").empty?, "Superscripts were nested")
     assert.call(page.call("pages/cms-integration-fixture/index.html").text.include?("A new standalone page"), "New standalone page missing")
     assert.call(File.file?(File.join(destination, "members/pawel-vijayakumar.html")), "Existing member URL changed")
+    zh_people = page.call("zh/team/index.html")
+    assert.call(zh_people.text.include?("CMS Integration Member"), "New shared member missing from Chinese site")
+    assert.call(zh_people.text.include?("中文译文待补充"), "Missing translation has no fallback notice")
+    assert.call(zh_people.at_css('a[href="/SuLabSMART/zh/members/cms-integration-fixture.html"]'), "Chinese member link has wrong language")
+    assert.call(page.call("zh/pages/cms-integration-fixture/index.html").text.include?("A new standalone page"), "New bilingual additional page / fallback missing")
+
   end
   puts "Content-only editing: new records, membership changes, sort order, standalone pages, rich-text uploads, scientific characters, and quoted metadata: PASS"
 ensure

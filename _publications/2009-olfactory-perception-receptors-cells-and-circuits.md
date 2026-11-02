@@ -9,6 +9,9 @@ article_label: Article
 pmid: '19804753'
 order: 33
 links: []
+zh:
+  translation_status: draft
+  body: "<p>(* 同等贡献, 综述)</p>"
 ---
 
 <p>(* equal contribution, Review)</p>

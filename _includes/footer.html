@@ -1,3 +1,5 @@
+{% assign settings = site.data.settings | bilingual_record %}
+{% assign contact_info = site.data.contact | bilingual_record %}
 {% assign image = page.footer | default: site.footer %}
 {% assign dark = page.footer-dark | is_nil: site.footer-dark | is_nil: true %}
 
@@ -11,14 +13,14 @@
 >
   <div>
     {% for email in site.data.contact.emails %}<a href="mailto:{{ email.address | escape }}">{{ email.label | default: email.address | escape }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}<br>
-    {% for line in site.data.contact.address_lines %}{{ line | escape }}<br>{% endfor %}
-    <a href="{{ '/contact/' | relative_url }}">{{ site.data.settings.contact_link_label | escape }}</a><br>
-    {{ site.data.settings.illustration_credit | escape }}
+    {% for line in contact_info.address_lines %}{{ line | escape }}<br>{% endfor %}
+    <a href="{{ '/contact/' | localized_url | relative_url }}">{{ settings.contact_link_label | escape }}</a><br>
+    {{ settings.illustration_credit | escape }}
   </div>
-  {% if site.data.contact.links.size > 0 %}<div>{% for link in site.data.contact.links %}<a href="{{ link.url | relative_url | escape }}">{{ link.label | escape }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</div>{% endif %}
+  {% if site.data.contact.links.size > 0 %}<div>{% for link in site.data.contact.links %}<a href="{{ link.url | localized_url | relative_url | escape }}">{{ link.label | escape }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</div>{% endif %}
   <div>
     &copy; {{ site.time | date: '%Y' }} {{ site.data.settings.copyright_name | escape }}
-    {% if site.data.settings.show_theme_credit %} | Built with <a href="https://github.com/greenelab/lab-website-template">Lab Website Template</a>{% endif %}
+    {% if site.data.settings.show_theme_credit %} | {% if page.lang == "zh" %}基于{% else %}Built with{% endif %} <a href="https://github.com/greenelab/lab-website-template">Lab Website Template</a>{% endif %}
   </div>
 
   <input

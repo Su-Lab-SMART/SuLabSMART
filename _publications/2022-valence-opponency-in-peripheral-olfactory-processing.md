@@ -1,6 +1,7 @@
 ---
 title: Valence opponency in peripheral olfactory processing
-authors: Wu, S-T*, Chen, J-Y,* Martin, V, Ng, R, Zhang, Y, Grover, D, Greenspan, R, Aljadeff, J, Su, C-Y
+authors: Wu, S-T*, Chen, J-Y,* Martin, V, Ng, R, Zhang, Y, Grover, D, Greenspan, R,
+  Aljadeff, J, Su, C-Y
 year: 2022
 journal: Proc Natl Acad Sci USA
 details: '119 (5) : e2120134119'
@@ -11,6 +12,9 @@ order: 11
 links:
 - label: see UCSD feature
   url: https://doi.org/10.1016/j.cmet.2021.12.020
+zh:
+  translation_status: draft
+  body: "<p>(*共同第一作者)</p>"
 ---
 
 <p>(*first authors)</p>

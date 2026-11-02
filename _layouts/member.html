@@ -1,15 +1,17 @@
 ---
 layout: default
 ---
+{% assign profile = page | bilingual_record %}
+{% assign people_info = site.data.pages.people | localize_page: "people" %}
 <article class="member-profile">
-  {% if page.image and page.image != '' %}<img class="profile-image" src="{{ page.image | relative_url }}" alt="{{ page.name | escape }}">{% endif %}
-  <h1>{{ page.name | escape }}</h1>
-  {% if page.status == 'alumni' %}<p>{{ site.data.pages.people.alumni_profile_label | escape }}</p>{% endif %}
-  {% if page.description and page.description != '' %}<p>{{ page.description | escape }}</p>{% endif %}
-  {% if page.affiliation and page.affiliation != '' %}<p>{{ page.affiliation | escape }}</p>{% endif %}
-  {% if page.history and page.history != '' %}<p>{{ page.history | escape }}</p>{% endif %}
+  {% if page.image and page.image != '' %}<img class="profile-image" src="{{ page.image | localized_url | relative_url }}" alt="{{ profile.name | escape }}">{% endif %}
+  <h1>{{ profile.name | escape }}</h1>
+  {% if page.status == 'alumni' %}<p>{{ people_info.alumni_profile_label | escape }}</p>{% endif %}
+  {% if profile.description and profile.description != '' %}<p>{{ profile.description | escape }}</p>{% endif %}
+  {% if profile.affiliation and profile.affiliation != '' %}<p>{{ profile.affiliation | escape }}</p>{% endif %}
+  {% if profile.history and profile.history != '' %}<p>{{ profile.history | escape }}</p>{% endif %}
   <p>{% for email in page.emails %}<a href="mailto:{{ email | escape }}">{{ email | escape }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</p>
-  {% if page.links.size > 0 %}<ul>{% for link in page.links %}<li><a href="{{ link.url | relative_url | escape }}">{{ link.label | escape }}</a></li>{% endfor %}</ul>{% endif %}
-  {{ content | render_content }}
+  {% if page.links.size > 0 %}<ul>{% for link in page.links %}<li><a href="{{ link.url | localized_url | relative_url | escape }}">{{ link.label | escape }}</a></li>{% endfor %}</ul>{% endif %}
+  {% include translation-notice.html item=profile %}{{ profile.content | render_content }}
 </article>
-<p><a href="{{ '/team/' | relative_url }}">{{ site.data.pages.people.profile_back_label | escape }}</a></p>
+<p><a href="{{ '/team/' | localized_url | relative_url }}">{{ people_info.profile_back_label | escape }}</a></p>
