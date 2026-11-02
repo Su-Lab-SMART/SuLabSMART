@@ -1,5 +1,6 @@
 ---
-title: 'Neuronal Compartmentalization: A means to integrate sensory input at the earliest stage of information processing?'
+title: 'Neuronal Compartmentalization: A means to integrate sensory input at the earliest
+  stage of information processing?'
 authors: Ng, R*, Wu, ST*, Su, C-Y
 year: 2020
 journal: BioEssays
@@ -11,6 +12,9 @@ order: 17
 links:
 - label: see Editorial Feature here
   url: https://onlinelibrary.wiley.com/doi/full/10.1002/bies.202000177
+zh:
+  translation_status: draft
+  body: "<p>(*共同第一作者, 综述)</p>"
 ---
 
 <p>(*first authors, Review)</p>

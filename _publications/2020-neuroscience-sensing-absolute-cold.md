@@ -9,6 +9,9 @@ article_label: Article
 pmid: '32693074'
 order: 16
 links: []
+zh:
+  translation_status: draft
+  body: "<p>(研究述评)</p>"
 ---
 
 <p>(Dispatch)</p>

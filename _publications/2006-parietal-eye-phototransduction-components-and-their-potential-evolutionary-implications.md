@@ -1,6 +1,8 @@
 ---
-title: Parietal-Eye phototransduction components and their potential evolutionary implications
-authors: Su, C-Y*, Luo, D-G, Terakita, A, Shichida, Y, Liao, H-W, Kazmi, MA, Sakmar, TP and Yau, K-W*
+title: Parietal-Eye phototransduction components and their potential evolutionary
+  implications
+authors: Su, C-Y*, Luo, D-G, Terakita, A, Shichida, Y, Liao, H-W, Kazmi, MA, Sakmar,
+  TP and Yau, K-W*
 year: 2006
 journal: Science
 details: '311: 1617-1621'
@@ -9,6 +11,9 @@ article_label: Article
 pmid: '16543463'
 order: 34
 links: []
+zh:
+  translation_status: draft
+  body: "<p>(* 共同通讯作者)</p>"
 ---
 
 <p>(* co-corresponding authors)</p>
