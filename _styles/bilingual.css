@@ -1,0 +1,23 @@
+.language-switch {
+  border: 1px solid currentColor;
+  border-radius: 5px;
+  padding: 6px 10px;
+  white-space: nowrap;
+}
+
+html[lang=zh-Hans] main {
+  line-height: 1.9;
+}
+
+.translation-notice {
+  font-size: 0.85em;
+  color: #666;
+  border-left: 3px solid #aaa;
+  padding-left: 0.8em;
+}
+
+html[data-dark=true] .translation-notice {
+  color: #bbb;
+}
+
+/*# sourceMappingURL=bilingual.css.map */
