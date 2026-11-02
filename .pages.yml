@@ -1,9 +1,9 @@
-# English forms for all website content. Layouts and build settings stay outside the CMS.
+---
 media:
 - name: images
   label: Image library
   input: images
-  output: /images
+  output: "/images"
   rename: safe
   extensions:
   - jpg
@@ -15,7 +15,7 @@ media:
   - avif
 content:
 - name: pages
-  label: Page text
+  label: Page text — English
   type: group
   items:
   - name: home
@@ -232,13 +232,231 @@ content:
     - name: maps_label
       label: Map link text
       type: string
+- name: pages_zh
+  label: 页面文字 — 简体中文
+  type: group
+  items:
+  - name: zh_home
+    label: Home / 中文
+    type: file
+    path: _data/pages_zh/home.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: section_heading
+      label: Introduction heading
+      type: string
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: links_heading
+      label: Explore links heading
+      type: string
+    - name: links
+      label: Links
+      type: object
+      list: true
+      fields:
+      - name: label
+        label: Link text
+        type: string
+        required: true
+      - name: url
+        label: Link address
+        type: string
+        required: true
+        description: Use https:// for another website, or a site path such as /research/.
+  - name: zh_research_page
+    label: Research page / 中文
+    type: file
+    path: _data/pages_zh/research.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+  - name: zh_people_page
+    label: People page / 中文
+    type: file
+    path: _data/pages_zh/people.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: awards_heading
+      label: Awards Heading
+      type: string
+    - name: alumni_heading
+      label: Alumni Heading
+      type: string
+    - name: profile_back_label
+      label: Back-to-People link text
+      type: string
+    - name: alumni_profile_label
+      label: Alumni profile label
+      type: string
+  - name: zh_publications_page
+    label: Publications page / 中文
+    type: file
+    path: _data/pages_zh/publications.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+  - name: zh_photos_page
+    label: Lab Photos page / 中文
+    type: file
+    path: _data/pages_zh/photos.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: open_photo_label
+      label: Open photo link label
+      type: string
+  - name: zh_join
+    label: Join Us / 中文
+    type: file
+    path: _data/pages_zh/join.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: section_heading
+      label: Invitation heading
+      type: string
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: contact_prompt
+      label: Contact invitation
+      type: string
+    - name: show_contact_emails
+      label: Show lab contact emails
+      type: boolean
+  - name: zh_contact_page
+    label: Contact page / 中文
+    type: file
+    path: _data/pages_zh/contact.json
+    format: json
+    fields:
+    - name: title
+      label: Browser tab title
+      type: string
+      required: true
+    - name: heading
+      label: Page heading
+      type: string
+      required: true
+    - name: introduction
+      label: Introduction
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
+    - name: email_heading
+      label: Email Heading
+      type: string
+    - name: location_heading
+      label: Location Heading
+      type: string
+    - name: maps_label
+      label: Map link text
+      type: string
 - name: members
   label: People — current members & alumni
   type: collection
   path: _members
   format: yaml-frontmatter
   filename:
-    template: '{primary}.md'
+    template: "{primary}.md"
     field: false
   operations:
     rename: false
@@ -282,7 +500,8 @@ content:
     type: number
     default: 100
     required: true
-    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new
+      entries.
     options:
       min: 0
       step: 1
@@ -327,13 +546,50 @@ content:
       media: images
       path: images/members
       rename: safe
+  - name: zh
+    label: 简体中文 / Chinese (optional; blank text falls back to English)
+    type: object
+    fields:
+    - name: translation_status
+      label: Translation status (manual)
+      type: select
+      options:
+        values:
+        - name: draft
+          label: Translated — review recommended
+        - name: ready
+          label: Reviewed
+        - name: needs_update
+          label: English changed — update translation
+    - name: name
+      label: Full name / 中文
+      type: string
+    - name: description
+      label: Position / role / 中文
+      type: string
+    - name: affiliation
+      label: Affiliation / 中文
+      type: string
+    - name: history
+      label: Roles and years in the lab / 中文
+      type: string
+      description: For alumni, e.g. Graduate Student (2021–25).
+    - name: body
+      label: Biography / 中文
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images/members
+        rename: safe
 - name: research
   label: Research topics
   type: collection
   path: _research
   format: yaml-frontmatter
   filename:
-    template: '{primary}.md'
+    template: "{primary}.md"
     field: false
   operations:
     rename: false
@@ -361,7 +617,8 @@ content:
     type: number
     default: 100
     required: true
-    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new
+      entries.
     options:
       min: 0
       step: 1
@@ -388,13 +645,47 @@ content:
   - name: image_caption
     label: Illustration caption
     type: string
+  - name: zh
+    label: 简体中文 / Chinese (optional; blank text falls back to English)
+    type: object
+    fields:
+    - name: translation_status
+      label: Translation status (manual)
+      type: select
+      options:
+        values:
+        - name: draft
+          label: Translated — review recommended
+        - name: ready
+          label: Reviewed
+        - name: needs_update
+          label: English changed — update translation
+    - name: title
+      label: Topic title / 中文
+      type: string
+    - name: body
+      label: Research description / 中文
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images/research
+        rename: safe
+    - name: image_alt
+      label: Illustration description / 中文
+      type: string
+      description: Describe the image for readers using assistive technology.
+    - name: image_caption
+      label: Illustration caption / 中文
+      type: string
 - name: publications
   label: Publications
   type: collection
   path: _publications
   format: yaml-frontmatter
   filename:
-    template: '{fields.year}-{primary}.md'
+    template: "{fields.year}-{primary}.md"
     field: false
   operations:
     rename: false
@@ -457,7 +748,8 @@ content:
     type: number
     default: 100
     required: true
-    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new
+      entries.
     options:
       min: 0
       step: 1
@@ -484,13 +776,37 @@ content:
       media: images
       path: images
       rename: safe
+  - name: zh
+    label: 简体中文 / Chinese (optional; blank text falls back to English)
+    type: object
+    fields:
+    - name: translation_status
+      label: Translation status (manual)
+      type: select
+      options:
+        values:
+        - name: draft
+          label: Translated — review recommended
+        - name: ready
+          label: Reviewed
+        - name: needs_update
+          label: English changed — update translation
+    - name: body
+      label: Contribution notes / additional information / 中文
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
 - name: photos
   label: Lab Photos
   type: collection
   path: _photos
   format: yaml-frontmatter
   filename:
-    template: '{year}-{month}-{day}-{hour}{minute}{second}-{primary}.md'
+    template: "{year}-{month}-{day}-{hour}{minute}{second}-{primary}.md"
     field: false
   operations:
     rename: false
@@ -545,17 +861,54 @@ content:
     type: number
     default: 100
     required: true
-    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new
+      entries.
     options:
       min: 0
       step: 1
+  - name: zh
+    label: 简体中文 / Chinese (optional; blank text falls back to English)
+    type: object
+    fields:
+    - name: translation_status
+      label: Translation status (manual)
+      type: select
+      options:
+        values:
+        - name: draft
+          label: Translated — review recommended
+        - name: ready
+          label: Reviewed
+        - name: needs_update
+          label: English changed — update translation
+    - name: title
+      label: Photo title / 中文
+      type: string
+      description: A short title to find this photo in the CMS.
+    - name: date_label
+      label: Date shown on website / 中文
+      type: string
+      description: 'For example: May 2026, or December 12, 2026.'
+    - name: body
+      label: Caption / 中文
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images/lab-photos
+        rename: safe
+    - name: alt
+      label: Image description / 中文
+      type: string
+      description: Briefly describe the scene for accessibility.
 - name: awards
   label: Awards
   type: collection
   path: _awards
   format: yaml-frontmatter
   filename:
-    template: '{primary}.md'
+    template: "{primary}.md"
     field: false
   operations:
     rename: false
@@ -582,7 +935,8 @@ content:
     type: number
     default: 100
     required: true
-    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new entries.
+    description: Smaller numbers appear first. Use 10, 20, 30 to leave room for new
+      entries.
     options:
       min: 0
       step: 1
@@ -595,6 +949,30 @@ content:
       media: images
       path: images
       rename: safe
+  - name: zh
+    label: 简体中文 / Chinese (optional; blank text falls back to English)
+    type: object
+    fields:
+    - name: translation_status
+      label: Translation status (manual)
+      type: select
+      options:
+        values:
+        - name: draft
+          label: Translated — review recommended
+        - name: ready
+          label: Reviewed
+        - name: needs_update
+          label: English changed — update translation
+    - name: body
+      label: Awards and fellowships / 中文
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
 - name: contact
   label: Lab contact details
   type: file
@@ -634,6 +1012,14 @@ content:
       type: string
       required: true
       description: Use https:// for another website, or a site path such as /research/.
+  - name: zh
+    label: 简体中文 / Chinese (optional; blank text falls back to English)
+    type: object
+    fields:
+    - name: address_lines
+      label: Postal address lines / 中文
+      type: string
+      list: true
 - name: settings
   label: Website settings & navigation
   type: file
@@ -704,7 +1090,8 @@ content:
     label: Main navigation
     type: object
     list: true
-    description: Drag entries to reorder. Changing a label does not change a page URL.
+    description: Drag entries to reorder. Changing a label does not change a page
+      URL.
     fields:
     - name: label
       label: Menu label
@@ -719,13 +1106,38 @@ content:
       label: Show in menu
       type: boolean
       default: true
+    - name: label_zh
+      label: Menu label / 中文
+      type: string
+  - name: zh
+    label: 简体中文 / Chinese (optional; blank text falls back to English)
+    type: object
+    fields:
+    - name: title
+      label: Website name / 中文
+      type: string
+    - name: subtitle
+      label: Tagline / 中文
+      type: string
+    - name: description
+      label: Search engine description / 中文
+      type: text
+    - name: logo_alt
+      label: Logo description / 中文
+      type: string
+    - name: illustration_credit
+      label: Illustration credit / 中文
+      type: string
+    - name: contact_link_label
+      label: Footer contact link text / 中文
+      type: string
 - name: extra_custom_pages
   label: Additional pages
   type: collection
   path: _custom_pages
   format: yaml-frontmatter
   filename:
-    template: '{primary}.md'
+    template: "{primary}.md"
     field: false
   operations:
     rename: false
@@ -757,5 +1169,35 @@ content:
   - name: description
     label: Search engine description
     type: text
+  - name: zh
+    label: 简体中文 / Chinese (optional; blank text falls back to English)
+    type: object
+    fields:
+    - name: translation_status
+      label: Translation status (manual)
+      type: select
+      options:
+        values:
+        - name: draft
+          label: Translated — review recommended
+        - name: ready
+          label: Reviewed
+        - name: needs_update
+          label: English changed — update translation
+    - name: title
+      label: Page title / 中文
+      type: string
+    - name: description
+      label: Search engine description / 中文
+      type: text
+    - name: body
+      label: Page content / 中文
+      type: rich-text
+      options:
+        format: html
+        switcher: false
+        media: images
+        path: images
+        rename: safe
 settings:
   config: false

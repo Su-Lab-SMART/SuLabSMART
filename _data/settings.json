@@ -16,32 +16,46 @@
     {
       "label": "Home",
       "url": "/",
-      "visible": true
+      "visible": true,
+      "label_zh": "首页"
     },
     {
       "label": "Research",
       "url": "/research/",
-      "visible": true
+      "visible": true,
+      "label_zh": "研究方向"
     },
     {
       "label": "People",
       "url": "/team/",
-      "visible": true
+      "visible": true,
+      "label_zh": "实验室成员"
     },
     {
       "label": "Publications",
       "url": "/publications/",
-      "visible": true
+      "visible": true,
+      "label_zh": "发表论文"
     },
     {
       "label": "Lab Photos",
       "url": "/lab-photos/",
-      "visible": true
+      "visible": true,
+      "label_zh": "实验室照片"
     },
     {
       "label": "Join Us",
       "url": "/join-us/",
-      "visible": true
+      "visible": true,
+      "label_zh": "加入我们"
     }
-  ]
+  ],
+  "zh": {
+    "title": "SuLabSMART",
+    "subtitle": "感觉神经科学",
+    "description": "深圳医学科学院 Su 实验室研究嗅觉受体神经元如何处理气味并引导行为。",
+    "logo_alt": "果蝇图标",
+    "illustration_credit": "插图：Chih-Hui Su。保留所有权利。",
+    "contact_link_label": "联系方式与地址"
+  }
 }

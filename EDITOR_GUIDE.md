@@ -31,3 +31,18 @@ For external links paste a full `https://...` address. For a page on this site, 
 Review the changed text and images, save, and wait for the build. Each save is recorded in GitHub history. Ask the repository owner to restore an earlier commit if a mistake needs to be undone. Removing a photo record removes it from the gallery; keep the underlying image if another entry still uses it.
 
 The forms control content. Layout code, build settings, and the CMS configuration are maintained separately. Adding ordinary records or Additional pages needs no coding; changing page layouts still requires a developer.
+
+## English and Simplified Chinese
+
+The English site stays at https://su-lab-smart.github.io/SuLabSMART/ and the Chinese site lives at https://su-lab-smart.github.io/SuLabSMART/zh/. Use the header language button on any page to open its counterpart. The home page also has a language link.
+
+- **Page text — English** edits the English page headings and introductions.
+- **页面文字 — 简体中文** edits their Chinese counterparts. Keep internal links in their language-neutral form (for example `/research/`); the Chinese site adds its own language prefix.
+- **People, Research topics, Lab Photos, Awards, Publications, Additional pages:** keep one entry per person/topic/photo/etc. Edit shared images, emails, membership, dates, references, and order once. Add translations in the **简体中文 / Chinese** object at the end of the form. For a member, the upper Biography is English and the Chinese Biography is inside this object.
+- **Website settings & navigation:** Chinese site title, tagline and other labels are inside the Chinese object. Each navigation item has a separate Chinese menu label; the destination is shared. **Lab contact details** has Chinese postal address lines; email and map links remain shared.
+- Keep personal names in their original spelling unless the person supplies a preferred Chinese name. Publication titles, author names, journal names, and scientific identifiers retain their official spelling. Add optional Chinese notes rather than translating a formal citation.
+- Blank Chinese text falls back to English. A missing nonempty body translation displays a notice on the Chinese page. Images are always shared and never need a second upload.
+- Translation status is **manual**: `draft` means translated and awaiting review; `ready` means reviewed; `needs_update` means the English text changed and the Chinese translation needs updating. This status helps editors track work; it does not hide translations or update automatically. Initial Chinese translations are marked `draft`; please have a lab member review scientific terminology and preferred names.
+- Creating a member or additional page automatically creates its language counterpart. Do not duplicate a record to make the Chinese version. The default-language routes and existing member URLs remain unchanged.
+
+The CMS reads these forms from the same repository and main branch. Existing GitHub and Pages CMS permissions continue to apply to both languages; no new installation is needed.

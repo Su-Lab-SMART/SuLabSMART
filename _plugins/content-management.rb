@@ -48,6 +48,7 @@ module SuLab
       fragment.css("[src], [href]").each do |node|
         %w[src href].each do |attribute|
           path = node[attribute]
+          path = localized_url(path) if attribute == "href"
           next unless path && (path.start_with?("/", "images/") && !path.start_with?("//"))
           base = site.baseurl.to_s.sub(%r{/$}, "")
           next if !base.empty? && (path == base || path.start_with?(base + "/"))

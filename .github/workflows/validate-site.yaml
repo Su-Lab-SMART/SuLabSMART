@@ -17,5 +17,7 @@ jobs:
         run: bundle exec jekyll build --baseurl '/SuLabSMART'
       - name: Validate editable content and generated links
         run: bundle exec ruby scripts/check_content.rb
+      - name: Validate bilingual pages and language switching
+        run: bundle exec ruby scripts/check_bilingual.rb
       - name: Exercise content-only CMS edits
         run: bundle exec ruby scripts/test_cms_editing.rb

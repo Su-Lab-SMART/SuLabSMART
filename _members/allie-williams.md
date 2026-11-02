@@ -8,4 +8,7 @@ emails: []
 links: []
 history: Undergraduate Student (2022-23)
 order: 12
+zh:
+  history: 本科生 (2022-23)
+  translation_status: draft
 ---

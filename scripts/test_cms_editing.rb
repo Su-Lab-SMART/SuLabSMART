@@ -61,6 +61,12 @@ begin
     assert.call(research_page.css("sup sup").empty?, "Superscripts were nested")
     assert.call(page.call("pages/cms-integration-fixture/index.html").text.include?("A new standalone page"), "New standalone page missing")
     assert.call(File.file?(File.join(destination, "members/pawel-vijayakumar.html")), "Existing member URL changed")
+    zh_people = page.call("zh/team/index.html")
+    assert.call(zh_people.text.include?("CMS Integration Member"), "New shared member missing from Chinese site")
+    assert.call(zh_people.text.include?("中文译文待补充"), "Missing translation has no fallback notice")
+    assert.call(zh_people.at_css('a[href="/SuLabSMART/zh/members/cms-integration-fixture.html"]'), "Chinese member link has wrong language")
+    assert.call(page.call("zh/pages/cms-integration-fixture/index.html").text.include?("A new standalone page"), "New bilingual additional page / fallback missing")
+
   end
   puts "Content-only editing: new records, membership changes, sort order, standalone pages, rich-text uploads, scientific characters, and quoted metadata: PASS"
 ensure
